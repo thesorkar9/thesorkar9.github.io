@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anik Sorkar – CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #1A6B6B;
+    --teal-light: #EAF4F4;
+    --teal-mid: #2E9090;
+    --dark: #1C1C1C;
+    --gray: #555;
+    --line: #B5D5D5;
+    --white: #fff;
+    --page-w: 794px;
+    --margin: 48px;
+  }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: #E8EAED;
+    color: var(--dark);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  /* ── Google Docs Page Shadow ── */
+  .page-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 0 48px;
+    gap: 24px;
+  }
+
+  .page {
+    width: var(--page-w);
+    min-height: 1123px;
+    background: var(--white);
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 4px 16px rgba(0,0,0,.10);
+    padding: var(--margin);
+    position: relative;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 3px solid var(--teal);
+    margin-bottom: 18px;
+  }
+
+  .header-left { flex: 1; }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 5px;
+  }
+
+  .title-tag {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--teal-mid);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    font-size: 11.5px;
+    color: var(--gray);
+  }
+
+  .contact-item { display: flex; align-items: center; gap: 5px; }
+  .contact-item svg { flex-shrink: 0; }
+  .contact-item a { color: var(--teal); text-decoration: none; font-weight: 700; }
+  .contact-item a:hover { text-decoration: underline; }
+
+  /* ── PHOTO ── */
+  .photo-box {
+    width: 105px;
+    height: 115px;
+    border-radius: 8px;
+    border: 3px solid var(--teal);
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--teal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .photo-placeholder svg { opacity: 0.4; }
+
+  .photo-placeholder span {
+    font-size: 9px;
+    color: var(--teal);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  #photoInput { display: none; }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 14px; }
+
+  .sec-title {
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--teal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1.5px solid var(--line);
+    padding-bottom: 3px;
+    margin-bottom: 8px;
+  }
+
+  .sec-body { font-size: 12.5px; color: var(--dark); }
+
+  /* ── EXPERIENCE / PROJECT ENTRY ── */
+  .entry { margin-bottom: 10px; }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .entry-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--dark);
+  }
+
+  .entry-date {
+    font-size: 11px;
+    color: var(--gray);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .entry-sub {
+    font-size: 12px;
+    color: var(--teal-mid);
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .entry-url {
+    font-size: 10.5px;
+    color: var(--teal-mid);
+    font-style: italic;
+    margin-bottom: 3px;
+  }
+
+  .bullets { padding-left: 0; list-style: none; }
+
+  .bullets li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 2px;
+    font-size: 12px;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  .bullets li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 10px;
+    top: 2px;
+  }
+
+  /* ── SKILLS TABLE ── */
+  .skills-table { width: 100%; border-collapse: collapse; }
+  .skills-table td {
+    padding: 5px 10px;
+    font-size: 12px;
+    border: 1px solid #DDE8E8;
+    vertical-align: top;
+  }
+  .skills-table td:first-child {
+    font-weight: 700;
+    color: var(--teal);
+    background: var(--teal-light);
+    width: 160px;
+    white-space: nowrap;
+  }
+
+  /* ── EDU TABLE ── */
+  .edu-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .edu-table th {
+    background: var(--teal);
+    color: #fff;
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+  .edu-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #E0EEEE;
+    vertical-align: top;
+  }
+  .edu-table tr:nth-child(even) td { background: var(--teal-light); }
+  .edu-table td:first-child { font-weight: 700; color: var(--dark); }
+
+  /* ── CERT ROW ── */
+  .cert-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 0;
+    border-bottom: 1px dotted #C8DEDE;
+    font-size: 12px;
+    gap: 10px;
+  }
+  .cert-name { font-weight: 700; color: var(--dark); }
+  .cert-inst { color: var(--gray); font-size: 11px; }
+
+  /* ── PERSONAL INFO ── */
+  .personal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+    font-size: 12px;
+  }
+  .pi-row { display: flex; gap: 6px; }
+  .pi-label { font-weight: 700; color: var(--teal); min-width: 110px; flex-shrink: 0; }
+
+  /* ── DECLARATION ── */
+  .declaration {
+    font-size: 11.5px;
+    color: var(--gray);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .sig-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--dark);
+    margin-top: 10px;
+  }
+  .sig-line { border-top: 1px solid #333; width: 140px; padding-top: 4px; text-align: center; font-size: 11px; color: var(--gray); }
+
+  /* ── OBJECTIVE ── */
+  .objective { font-size: 12.5px; color: #333; line-height: 1.6; }
+
+  /* ── SKILLS INLINE TAGS ── */
+  .tech-tag {
+    display: inline-block;
+    font-size: 10px;
+    background: var(--teal-light);
+    color: var(--teal);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin: 1px 2px 1px 0;
+    font-weight: 700;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page-wrap { padding: 0; gap: 0; background: white; }
+    .page { box-shadow: none; page-break-after: always; min-height: auto; }
+    .photo-box { cursor: default; }
+    .print-btn { display: none; }
+    .no-print { display: none; }
+  }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    z-index: 999;
+    letter-spacing: 0.5px;
+  }
+  .print-btn:hover { background: #145555; }
+
+  .upload-hint {
+    position: fixed;
+    top: 62px;
+    right: 24px;
+    font-size: 11px;
+    color: var(--teal);
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    text-align: right;
+    z-index: 999;
+  }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨 Print / Save PDF</button>
+<div class="upload-hint no-print">Click photo box to add your photo</div>
+<input type="file" id="photoInput" accept="image/*">
+
+<div class="page-wrap">
+
+<!-- ══════════════════ PAGE 1 ══════════════════ -->
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="name">Anik Sorkar</div>
+      <div class="title-tag">Cybersecurity Engineer &nbsp;|&nbsp; M.Tech CSE, NIT Silchar</div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Magura-7600, Bangladesh
+        </div>
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.4 11.6 19.79 19.79 0 011.33 3.07 2 2 0 013.3 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +880 1637-853275
+        </div>
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:thesorkar@gmail.com">thesorkar@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          <a href="https://github.com/thesorkar9" target="_blank">github.com/thesorkar9</a>
+        </div>
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          <a href="http://thesorkar.js.org" target="_blank">thesorkar.js.org</a>
+        </div>
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+          Nationality: Bangladeshi
+        </div>
+      </div>
+    </div>
+
+    <!-- PHOTO BOX -->
+    <div class="photo-box" onclick="document.getElementById('photoInput').click()" title="Click to upload your photo">
+      <img id="photoImg" src="" alt="Photo">
+      <div class="photo-placeholder" id="photoPlaceholder">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Click to<br>Add Photo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAREER OBJECTIVE -->
+  <div class="section">
+    <div class="sec-title">Career Objective</div>
+    <p class="objective">
+      Results-driven Cybersecurity Engineer currently pursuing M.Tech in Computer Science &amp; Engineering at NIT Silchar, with a B.Tech in CSE specializing in Cyber Security from Lovely Professional University. Experienced in network defense, penetration testing, incident response, and secure web development, with hands-on ATM/CRM field engineering experience. Proficient in Python, C, and C++, with a strong commitment to delivering real-world security solutions for Bangladesh's growing digital infrastructure.
+    </p>
+  </div>
+
+  <!-- EMPLOYMENT -->
+  <div class="section">
+    <div class="sec-title">Professional Experience</div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Assistant Service &amp; Support Engineer — ATM/CRM Operations</div>
+        <div class="entry-date">Jun 2023 – May 2024</div>
+      </div>
+      <div class="entry-sub">Armor Bangladesh Limited, Dhaka, Bangladesh &nbsp;|&nbsp; 1 Year</div>
+      <ul class="bullets">
+        <li>Provided field support for Hitachi CRM systems across major banking institutions including diagnostics, troubleshooting, and firmware updates ensuring secure, high-availability transaction processing.</li>
+        <li>Managed embedded systems and ATM/CRM security protocols, minimizing downtime across client banking networks.</li>
+        <li>Delivered hardware/software maintenance and analytical troubleshooting in fast-paced, SLA-driven banking environments.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="section">
+    <div class="sec-title">Technical Skills</div>
+    <table class="skills-table">
+      <tr>
+        <td>Cybersecurity</td>
+        <td>Penetration Testing, Ethical Hacking, Incident Response, Network Defense, Digital Forensics, Threat Intelligence</td>
+      </tr>
+      <tr>
+        <td>Programming</td>
+        <td>Python &nbsp;·&nbsp; C &nbsp;·&nbsp; C++ &nbsp;·&nbsp; ASP.NET / C# &nbsp;·&nbsp; JavaScript &nbsp;·&nbsp; HTML &amp; CSS</td>
+      </tr>
+      <tr>
+        <td>Tools &amp; Platforms</td>
+        <td>Linux OS, Flask, Scikit-learn, Jupyter Notebook, SQL Server, Git / GitHub, Pandas, NumPy, Matplotlib</td>
+      </tr>
+      <tr>
+        <td>Other</td>
+        <td>Networking, Hardware &amp; Software Management, Troubleshooting &amp; Maintenance, Technical Documentation</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="sec-title">Projects</div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Tiger IDS — Machine Learning Intrusion Detection System</div>
+        <div class="entry-date">May 2022</div>
+      </div>
+      <div class="entry-url">github.com/thesorkar/Tiger-Intrusion-Detection-System</div>
+      <ul class="bullets">
+        <li>Built an ML-based IDS to classify malicious vs. normal network traffic using the KDD Cup 99 dataset with Decision Tree, Random Forest, and SVM models.</li>
+        <li>Developed a Flask web interface for CSV upload and real-time prediction display; serialized models with pickle for deployment.</li>
+      </ul>
+      <div style="margin-top:4px">
+        <span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Pandas</span><span class="tech-tag">Jupyter</span><span class="tech-tag">HTML/CSS/JS</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Data Cleanroom — Browser-Based CSV Cleaner</div>
+        <div class="entry-date">2024</div>
+      </div>
+      <div class="entry-url">github.com/thesorkar9/data-cleanroom</div>
+      <ul class="bullets">
+        <li>Static web app for cleaning messy CSV exports locally in the browser — featuring deduplication, column profiling, smart cleanup, and CSV/JSON export.</li>
+        <li>Implemented local-first session persistence with localStorage and a dataset quality scoring system with fill-rate and unique-count metrics.</li>
+      </ul>
+      <div style="margin-top:4px">
+        <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">Vanilla JS</span><span class="tech-tag">LocalStorage API</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Repo Scorecard — GitHub Portfolio Auditor CLI</div>
+        <div class="entry-date">2024</div>
+      </div>
+      <div class="entry-url">github.com/thesorkar9/repo-scorecard</div>
+      <ul class="bullets">
+        <li>Python CLI tool that audits GitHub repos and profiles for portfolio readiness — scoring on README quality, licensing, CI/CD presence, topics, and release hygiene.</li>
+        <li>Supports text, Markdown, and JSON output with GitHub Actions workflow and full unit test coverage.</li>
+      </ul>
+      <div style="margin-top:4px">
+        <span class="tech-tag">Python</span><span class="tech-tag">GitHub REST API</span><span class="tech-tag">CLI</span><span class="tech-tag">GitHub Actions</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Food Ordering System — Full-Stack Web App</div>
+        <div class="entry-date">Apr 2022</div>
+      </div>
+      <div class="entry-url">github.com/thesorkar/Food-Ordering-Project</div>
+      <ul class="bullets">
+        <li>Full-stack online food ordering application with role-based dashboards for customers, restaurant admins, and delivery personnel, with user authentication and real-time order tracking.</li>
+      </ul>
+      <div style="margin-top:4px">
+        <span class="tech-tag">ASP.NET</span><span class="tech-tag">C#</span><span class="tech-tag">SQL Server</span><span class="tech-tag">JavaScript</span><span class="tech-tag">SCSS</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page 1 -->
+
+
+<!-- ══════════════════ PAGE 2 ══════════════════ -->
+<div class="page">
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="sec-title">Academic Qualifications</div>
+    <table class="edu-table">
+      <thead>
+        <tr>
+          <th>Degree / Exam</th>
+          <th>Specialization / Major</th>
+          <th>Institution</th>
+          <th>Result</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>M.Tech (Enrolled)</td>
+          <td>Computer Science &amp; Engineering</td>
+          <td>NIT Silchar, India</td>
+          <td>Enrolled</td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td>B.Tech</td>
+          <td>CSE — Specialized in Cyber Security</td>
+          <td>Lovely Professional University, India</td>
+          <td>6.57 / 10</td>
+          <td>2022</td>
+        </tr>
+        <tr>
+          <td>HSC</td>
+          <td>Science</td>
+          <td>Govt. H.S.S. College, Magura</td>
+          <td>3.5 / 5</td>
+          <td>2018</td>
+        </tr>
+        <tr>
+          <td>SSC</td>
+          <td>Science</td>
+          <td>Magura Govt. High School</td>
+          <td>4.33 / 5</td>
+          <td>2015</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="sec-title">Professional Certifications</div>
+    <div class="cert-row">
+      <span><span class="cert-name">CompTIA Security+ (SY0-601)</span></span>
+      <span class="cert-inst">Cybrary &nbsp;·&nbsp; 2021</span>
+    </div>
+    <div class="cert-row">
+      <span><span class="cert-name">Advanced Penetration Testing</span></span>
+      <span class="cert-inst">Cybrary &nbsp;·&nbsp; 2021</span>
+    </div>
+    <div class="cert-row">
+      <span><span class="cert-name">Digital Forensics Essentials (DFE)</span></span>
+      <span class="cert-inst">EC-Council / CodeRed &nbsp;·&nbsp; 2023</span>
+    </div>
+    <div class="cert-row">
+      <span><span class="cert-name">Cyber Threat Intelligence 101</span></span>
+      <span class="cert-inst">arcX &nbsp;·&nbsp; 2023</span>
+    </div>
+    <div class="cert-row">
+      <span><span class="cert-name">Fundamentals of Digital Marketing</span></span>
+      <span class="cert-inst">Google Digital Garage &nbsp;·&nbsp; 2020</span>
+    </div>
+  </div>
+
+  <!-- TRAINING -->
+  <div class="section">
+    <div class="sec-title">Training</div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Object-Oriented Programming using Python — Internship</div>
+        <div class="entry-date">2021 &nbsp;|&nbsp; 6 Months</div>
+      </div>
+      <div class="entry-sub">E-Box (LPU Internship Program), India</div>
+    </div>
+  </div>
+
+  <!-- LANGUAGE -->
+  <div class="section">
+    <div class="sec-title">Language Proficiency</div>
+    <table class="edu-table">
+      <thead>
+        <tr><th>Language</th><th>Reading</th><th>Writing</th><th>Speaking</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Bangla</td><td>Native</td><td>Native</td><td>Native</td></tr>
+        <tr><td>English</td><td>Fluent</td><td>Fluent</td><td>Fluent</td></tr>
+        <tr><td>Hindi</td><td>Basic</td><td>Basic</td><td>Conversational</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PERSONAL INFO -->
+  <div class="section">
+    <div class="sec-title">Personal Information</div>
+    <div class="personal-grid">
+      <div class="pi-row"><span class="pi-label">Father's Name</span><span>Achinto Sorkar</span></div>
+      <div class="pi-row"><span class="pi-label">Date of Birth</span><span>09 December 1998</span></div>
+      <div class="pi-row"><span class="pi-label">Mother's Name</span><span>Shikha Sorkar</span></div>
+      <div class="pi-row"><span class="pi-label">Marital Status</span><span>Single</span></div>
+      <div class="pi-row"><span class="pi-label">Nationality</span><span>Bangladeshi</span></div>
+      <div class="pi-row"><span class="pi-label">Religion</span><span>Hinduism</span></div>
+      <div class="pi-row"><span class="pi-label">Blood Group</span><span>A+</span></div>
+      <div class="pi-row"><span class="pi-label">Gender</span><span>Male</span></div>
+      <div class="pi-row"><span class="pi-label">Passport No.</span><span>A00147716 &nbsp;(Issued: 15 Nov 2020)</span></div>
+      <div class="pi-row"><span class="pi-label">Height / Weight</span><span>5'7" &nbsp;/&nbsp; 70 kg</span></div>
+      <div class="pi-row" style="grid-column: 1 / -1;">
+        <span class="pi-label">Permanent Address</span>
+        <span>Islam Manjil, Hospital Para, Magura Sadar, Magura-7600, Bangladesh</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DECLARATION -->
+  <div class="section">
+    <div class="sec-title">Declaration</div>
+    <p class="declaration">
+      I hereby declare that all the information provided above is true and correct to the best of my knowledge and belief.
+    </p>
+    <div class="sig-row">
+      <div>
+        <div class="sig-line">Date</div>
+      </div>
+      <div>
+        <div class="sig-line">Signature of Applicant</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page 2 -->
+</div><!-- /page-wrap -->
+
+<script>
+  const input = document.getElementById('photoInput');
+  const img = document.getElementById('photoImg');
+  const placeholder = document.getElementById('photoPlaceholder');
+
+  input.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      img.src = ev.target.result;
+      img.style.display = 'block';
+      placeholder.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  });
+</script>
+</body>
+</html>
