@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anik Sorkar – CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #1A6B6B;
+    --teal-light: #EAF4F4;
+    --teal-mid: #2E9090;
+    --dark: #1C1C1C;
+    --gray: #555;
+    --line: #B5D5D5;
+    --white: #fff;
+    --page-w: 794px;
+    --margin: 48px;
+    --edit-highlight: rgba(26, 107, 107, 0.06);
+    --edit-border: rgba(26, 107, 107, 0.35);
+  }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: #E8EAED;
+    color: var(--dark);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .page-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 0 48px;
+    gap: 24px;
+  }
+
+  .page {
+    width: var(--page-w);
+    min-height: 1123px;
+    background: var(--white);
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 4px 16px rgba(0,0,0,.10);
+    padding: var(--margin);
+    position: relative;
+  }
+
+  /* ── TOOLBAR ── */
+  .toolbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 56px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  }
+
+  .toolbar-left { display: flex; align-items: center; gap: 12px; }
+  .toolbar-right { display: flex; align-items: center; gap: 10px; }
+
+  .toolbar-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--teal);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .edit-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--teal-light);
+    color: var(--teal);
+    border: 1px solid var(--line);
+    display: none;
+  }
+
+  body.edit-mode .edit-badge { display: inline; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background 0.15s, opacity 0.15s;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-edit {
+    background: var(--teal);
+    color: #fff;
+  }
+  .btn-edit:hover { background: #145555; }
+
+  .btn-done {
+    background: #2E9090;
+    color: #fff;
+    display: none;
+  }
+  .btn-done:hover { background: #227070; }
+
+  .btn-print {
+    background: transparent;
+    color: var(--teal);
+    border: 1.5px solid var(--teal);
+  }
+  .btn-print:hover { background: var(--teal-light); }
+
+  body.edit-mode .btn-edit { display: none; }
+  body.edit-mode .btn-done { display: inline-flex; }
+
+  .btn-add {
+    background: var(--teal-light);
+    color: var(--teal);
+    border: 1px dashed var(--teal);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    display: none;
+    margin-top: 6px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  body.edit-mode .btn-add { display: inline-flex; gap: 4px; align-items: center; }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 3px solid var(--teal);
+    margin-bottom: 18px;
+  }
+
+  .header-left { flex: 1; }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 5px;
+  }
+
+  .title-tag {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--teal-mid);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    font-size: 11.5px;
+    color: var(--gray);
+  }
+
+  .contact-item { display: flex; align-items: center; gap: 5px; }
+  .contact-item svg { flex-shrink: 0; }
+  .contact-item a { color: var(--teal); text-decoration: none; font-weight: 700; }
+
+  .photo-box {
+    width: 105px;
+    height: 115px;
+    border-radius: 8px;
+    border: 3px solid var(--teal);
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--teal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .photo-placeholder svg { opacity: 0.4; }
+
+  .photo-placeholder span {
+    font-size: 9px;
+    color: var(--teal);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  #photoInput { display: none; }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 14px; position: relative; }
+
+  .sec-title {
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--teal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1.5px solid var(--line);
+    padding-bottom: 3px;
+    margin-bottom: 8px;
+  }
+
+  .sec-body { font-size: 12.5px; color: var(--dark); }
+
+  /* ── ENTRIES ── */
+  .entry { margin-bottom: 10px; position: relative; }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .entry-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--dark);
+  }
+
+  .entry-date {
+    font-size: 11px;
+    color: var(--gray);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .entry-sub {
+    font-size: 12px;
+    color: var(--teal-mid);
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .entry-url a {
+    font-size: 10.5px;
+    color: var(--teal-mid);
+    font-style: italic;
+    text-decoration: none;
+  }
+  .entry-url a:hover { text-decoration: underline; }
+
+  .bullets { padding-left: 0; list-style: none; }
+
+  .bullets li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 2px;
+    font-size: 12px;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  .bullets li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 10px;
+    top: 2px;
+  }
+
+  /* ── SKILLS TABLE ── */
+  .skills-table { width: 100%; border-collapse: collapse; }
+  .skills-table td {
+    padding: 5px 10px;
+    font-size: 12px;
+    border: 1px solid #DDE8E8;
+    vertical-align: top;
+  }
+  .skills-table td:first-child {
+    font-weight: 700;
+    color: var(--teal);
+    background: var(--teal-light);
+    width: 160px;
+    white-space: nowrap;
+  }
+
+  /* ── EDU TABLE ── */
+  .edu-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .edu-table th {
+    background: var(--teal);
+    color: #fff;
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+  .edu-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #E0EEEE;
+    vertical-align: top;
+  }
+  .edu-table tr:nth-child(even) td { background: var(--teal-light); }
+  .edu-table td:first-child { font-weight: 700; color: var(--dark); }
+
+  /* ── CERT ROW ── */
+  .cert-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 0;
+    border-bottom: 1px dotted #C8DEDE;
+    font-size: 12px;
+    gap: 10px;
+    position: relative;
+  }
+  .cert-name { font-weight: 700; color: var(--dark); }
+  .cert-inst { color: var(--gray); font-size: 11px; }
+
+  /* ── PERSONAL INFO ── */
+  .personal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+    font-size: 12px;
+  }
+  .pi-row { display: flex; gap: 6px; }
+  .pi-label { font-weight: 700; color: var(--teal); min-width: 110px; flex-shrink: 0; }
+
+  /* ── DECLARATION ── */
+  .declaration {
+    font-size: 11.5px;
+    color: var(--gray);
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  .sig-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 12px;
+    color: var(--dark);
+    margin-top: 10px;
+    gap: 20px;
+  }
+
+  .sig-block { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+
+  .sig-line-label {
+    border-top: 1px solid #333;
+    width: 180px;
+    padding-top: 4px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray);
+  }
+
+  /* Date field */
+  .date-field {
+    width: 180px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--dark);
+    padding: 4px 0;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Signature area */
+  .sig-area {
+    width: 220px;
+    height: 70px;
+    border: 1px dashed #bbb;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sig-area canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    cursor: crosshair;
+    touch-action: none;
+  }
+
+  .sig-area img.sig-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: none;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sig-placeholder-text {
+    font-size: 10px;
+    color: #bbb;
+    font-style: italic;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Sig controls (edit mode only) */
+  .sig-controls {
+    display: none;
+    gap: 5px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 220px;
+  }
+
+  body.edit-mode .sig-controls { display: flex; }
+
+  .sig-ctrl-btn {
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    background: var(--teal-light);
+    color: var(--teal);
+    letter-spacing: 0.3px;
+  }
+
+  .sig-ctrl-btn:hover { background: var(--teal); color: #fff; }
+  .sig-ctrl-btn.active { background: var(--teal); color: #fff; }
+
+  /* In edit mode show border on sig area */
+  body.edit-mode .sig-area {
+    border-color: var(--edit-border);
+    background: var(--edit-highlight);
+  }
+
+  /* In edit mode allow drawing */
+  body:not(.edit-mode) .sig-area canvas { pointer-events: none; }
+
+  @media print {
+    .sig-controls { display: none !important; }
+    .sig-area { border: none !important; background: transparent !important; }
+    .sig-placeholder-text { display: none !important; }
+  }
+
+  .objective { font-size: 12.5px; color: #333; line-height: 1.6; }
+
+  .tech-tag {
+    display: inline-block;
+    font-size: 10px;
+    background: var(--teal-light);
+    color: var(--teal);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin: 1px 2px 1px 0;
+    font-weight: 700;
+  }
+
+  /* ── EDIT MODE STYLES ── */
+  body.edit-mode [contenteditable="true"] {
+    outline: none;
+    border-radius: 3px;
+    background: var(--edit-highlight);
+    box-shadow: 0 0 0 1px var(--edit-border);
+    cursor: text;
+    min-width: 20px;
+    display: inline-block;
+    padding: 1px 3px;
+  }
+
+  body.edit-mode [contenteditable="true"]:focus {
+    background: #fff;
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+
+  body.edit-mode [contenteditable="true"]:empty::before {
+    content: attr(data-placeholder);
+    color: #aaa;
+    font-style: italic;
+    pointer-events: none;
+  }
+
+  body.edit-mode .entry:hover .delete-btn,
+  body.edit-mode .cert-row:hover .delete-btn,
+  body.edit-mode .edu-table tr:hover .delete-btn,
+  body.edit-mode .skills-table tr:hover .delete-btn,
+  body.edit-mode .bullets li:hover .delete-btn {
+    opacity: 1;
+  }
+
+  .delete-btn {
+    position: absolute;
+    right: -22px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 10px;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s;
+    display: none;
+    padding: 0;
+    font-family: monospace;
+  }
+
+  body.edit-mode .delete-btn { display: flex; align-items: center; justify-content: center; }
+
+  .edit-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--teal);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    display: none;
+    box-shadow: 0 4px 16px rgba(26,107,107,0.35);
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  body.edit-mode .edit-hint { display: block; }
+
+  /* ── ADD ROW BUTTON (inline in tables) ── */
+  .add-row-btn {
+    display: none;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--teal);
+    background: var(--teal-light);
+    border: 1px dashed var(--teal);
+    border-top: none;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  body.edit-mode .add-row-btn { display: block; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page-wrap { padding: 0; gap: 0; background: white; }
+    .page { box-shadow: none; page-break-after: always; min-height: auto; }
+    .toolbar, .edit-hint { display: none !important; }
+    .delete-btn, .btn-add, .add-row-btn { display: none !important; }
+    [contenteditable] { box-shadow: none !important; background: transparent !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="toolbar-left">
+    <span class="toolbar-logo">Anik Sorkar — CV</span>
+    <span class="edit-badge">✏ Editing</span>
+  </div>
+  <div class="toolbar-right">
+    <button class="btn btn-edit" onclick="enableEdit()">✏ Edit CV</button>
+    <button class="btn btn-done" onclick="disableEdit()">✓ Done Editing</button>
+    <button class="btn btn-print" onclick="window.print()">🖨 Print / Save PDF</button>
+  </div>
+</div>
+
+<div class="edit-hint">Click any text to edit it &nbsp;·&nbsp; Hover entries to delete &nbsp;·&nbsp; Use "Add" buttons to add new items</div>
+
+<input type="file" id="photoInput" accept="image/*">
+
+<div class="page-wrap">
+
+<!-- PAGE 1 -->
+<div class="page">
+
+  <div class="header">
+    <div class="header-left">
+      <div class="name" contenteditable="false" data-placeholder="Full Name">Anik Sorkar</div>
+      <div class="title-tag" contenteditable="false" data-placeholder="Title / Role">Computer Science &amp; Engineering Graduate &nbsp;|&nbsp; M.Tech, NIT Silchar</div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span contenteditable="false" data-placeholder="Location">Magura-7600, Bangladesh</span>
+        </div>
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.4 11.6 19.79 19.79 0 011.33 3.07 2 2 0 013.3 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:+8801637853275" contenteditable="false" data-placeholder="Phone">+880 1637-853275</a>
+        </div>
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:thesorkar@gmail.com" contenteditable="false" data-placeholder="Email">thesorkar@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          <a href="https://github.com/thesorkar9" target="_blank" contenteditable="false" data-placeholder="GitHub URL">github.com/thesorkar9</a>
+        </div>
+        <div class="contact-item">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          <a href="http://thesorkar.js.org" target="_blank" contenteditable="false" data-placeholder="Website">thesorkar.js.org</a>
+        </div>
+      </div>
+    </div>
+    <div class="photo-box" onclick="document.getElementById('photoInput').click()" title="Click to upload photo">
+      <img id="photoImg" src="" alt="Photo">
+      <div class="photo-placeholder" id="photoPlaceholder">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1A6B6B" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Click to<br>Add Photo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAREER OBJECTIVE -->
+  <div class="section">
+    <div class="sec-title">Career Objective</div>
+    <p class="objective" contenteditable="false" data-placeholder="Write your career objective here...">
+      Cybersecurity and software engineering specialist with an M.Tech (NIT Silchar) and a B.Tech in CSE with a Cyber Security concentration (LPU). Core expertise spans network intrusion detection, penetration testing, digital forensics, and end-to-end application development, backed by hands-on project work applying machine learning to real security problems. Equally capable in software development, IT infrastructure, and field engineering roles, with one year of hands-on field experience maintaining and troubleshooting critical banking CRM systems under strict uptime and response-time requirements. Brings a rare combination of deep security knowledge, practical Python and web development skills, and the field mindset to adapt quickly across technical domains.
+    </p>
+  </div>
+
+  <!-- EMPLOYMENT -->
+  <div class="section">
+    <div class="sec-title">Professional Experience</div>
+    <div id="experience-list">
+      <div class="entry">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <div class="entry-head">
+          <div class="entry-title" contenteditable="false" data-placeholder="Job Title">Assistant Service &amp; Support Engineer — ATM/CRM Operations</div>
+          <div class="entry-date" contenteditable="false" data-placeholder="Date">Jun 2023 – May 2024</div>
+        </div>
+        <div class="entry-sub" contenteditable="false" data-placeholder="Company, Location | Duration">Armor Bangladesh Limited, Dhaka, Bangladesh &nbsp;|&nbsp; 1 Year</div>
+        <ul class="bullets">
+          <li><span contenteditable="false" data-placeholder="Bullet point...">Provided field support for Hitachi CRM systems across major banking institutions including diagnostics, troubleshooting, and firmware updates ensuring secure, high-availability transaction processing.</span></li>
+          <li><span contenteditable="false" data-placeholder="Bullet point...">Managed embedded systems and ATM/CRM security protocols, minimizing downtime across client banking networks.</span></li>
+          <li><span contenteditable="false" data-placeholder="Bullet point...">Delivered hardware/software maintenance and analytical troubleshooting in fast-paced, SLA-driven banking environments.</span></li>
+        </ul>
+        <button class="btn-add" onclick="addBullet(this)">+ Add bullet</button>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addExperience()">+ Add experience</button>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="section">
+    <div class="sec-title">Technical Skills</div>
+    <table class="skills-table" id="skills-table">
+      <tr>
+        <td contenteditable="false" data-placeholder="Category">Programming</td>
+        <td contenteditable="false" data-placeholder="Skills...">Python · C · C++ · Java · ASP.NET / C# · JavaScript · HTML &amp; CSS</td>
+      </tr>
+      <tr>
+        <td contenteditable="false" data-placeholder="Category">Core CS</td>
+        <td contenteditable="false" data-placeholder="Skills...">Data Structures &amp; Algorithms, Computer Organization &amp; Design, Operating Systems, Discrete Mathematics, Formal Languages &amp; Automata Theory, Software Engineering</td>
+      </tr>
+      <tr>
+        <td contenteditable="false" data-placeholder="Category">Networks &amp; Systems</td>
+        <td contenteditable="false" data-placeholder="Skills...">Computer Networks, Internetworking Essentials, Network Security &amp; Cryptography, Cloud Computing, Virtualization, Database Management Systems</td>
+      </tr>
+      <tr>
+        <td contenteditable="false" data-placeholder="Category">Security</td>
+        <td contenteditable="false" data-placeholder="Skills...">Cyber Security Essentials, Penetration Testing, Information System Security, Securing Computing Systems, Information Security &amp; Privacy, Digital Forensics, Forensic Fingerprinting</td>
+      </tr>
+      <tr>
+        <td contenteditable="false" data-placeholder="Category">AI / Data</td>
+        <td contenteditable="false" data-placeholder="Skills...">Artificial Intelligence, Probability &amp; Statistics, Machine Learning (Scikit-learn), Pandas, NumPy, Matplotlib, Jupyter Notebook</td>
+      </tr>
+      <tr>
+        <td contenteditable="false" data-placeholder="Category">Tools &amp; Platforms</td>
+        <td contenteditable="false" data-placeholder="Skills...">Linux OS, Flask, SQL Server, Git / GitHub, Modern Web Programming Tools &amp; Techniques</td>
+      </tr>
+      <tr>
+        <td contenteditable="false" data-placeholder="Category">Other</td>
+        <td contenteditable="false" data-placeholder="Skills...">Hardware &amp; Software Management, ATM/CRM Field Support, Troubleshooting &amp; Maintenance, Technical Documentation</td>
+      </tr>
+    </table>
+    <button class="add-row-btn" onclick="addSkillRow()">+ Add skill category</button>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="sec-title">Projects</div>
+    <div id="projects-list">
+
+      <div class="entry">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <div class="entry-head">
+          <div class="entry-title" contenteditable="false" data-placeholder="Project Name">Tiger IDS — Machine Learning Intrusion Detection System</div>
+          <div class="entry-date" contenteditable="false" data-placeholder="Date">May 2022</div>
+        </div>
+        <div class="entry-url"><a href="https://github.com/thesorkar/Tiger-Intrusion-Detection-System" target="_blank" contenteditable="false" data-placeholder="GitHub / URL">github.com/thesorkar/Tiger-Intrusion-Detection-System</a></div>
+        <ul class="bullets">
+          <li><span contenteditable="false" data-placeholder="Bullet point...">Built an ML-based IDS to classify malicious vs. normal network traffic using the KDD Cup 99 dataset with Decision Tree, Random Forest, and SVM models.</span></li>
+          <li><span contenteditable="false" data-placeholder="Bullet point...">Developed a Flask web interface for CSV upload and real-time prediction display; serialized models with pickle for deployment.</span></li>
+        </ul>
+        <button class="btn-add" onclick="addBullet(this)">+ Add bullet</button>
+        <div style="margin-top:4px" class="tags-row">
+          <span class="tech-tag" contenteditable="false">Python</span><span class="tech-tag" contenteditable="false">Flask</span><span class="tech-tag" contenteditable="false">Scikit-learn</span><span class="tech-tag" contenteditable="false">Pandas</span><span class="tech-tag" contenteditable="false">Jupyter</span><span class="tech-tag" contenteditable="false">HTML/CSS/JS</span>
+          <button class="btn-add" onclick="addTag(this)" style="margin-top:0">+ Tag</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <div class="entry-head">
+          <div class="entry-title" contenteditable="false" data-placeholder="Project Name">Data Cleanroom — Browser-Based CSV Cleaner</div>
+          <div class="entry-date" contenteditable="false" data-placeholder="Date">2024</div>
+        </div>
+        <div class="entry-url"><a href="https://github.com/thesorkar9/data-cleanroom" target="_blank" contenteditable="false" data-placeholder="GitHub / URL">github.com/thesorkar9/data-cleanroom</a></div>
+        <ul class="bullets">
+          <li><span contenteditable="false" data-placeholder="Bullet point...">Static web app for cleaning messy CSV exports locally in the browser — featuring deduplication, column profiling, smart cleanup, and CSV/JSON export.</span></li>
+          <li><span contenteditable="false" data-placeholder="Bullet point...">Implemented local-first session persistence with localStorage and a dataset quality scoring system with fill-rate and unique-count metrics.</span></li>
+        </ul>
+        <button class="btn-add" onclick="addBullet(this)">+ Add bullet</button>
+        <div style="margin-top:4px" class="tags-row">
+          <span class="tech-tag" contenteditable="false">HTML</span><span class="tech-tag" contenteditable="false">CSS</span><span class="tech-tag" contenteditable="false">Vanilla JS</span><span class="tech-tag" contenteditable="false">LocalStorage API</span>
+          <button class="btn-add" onclick="addTag(this)" style="margin-top:0">+ Tag</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <div class="entry-head">
+          <div class="entry-title" contenteditable="false" data-placeholder="Project Name">Repo Scorecard — GitHub Portfolio Auditor CLI</div>
+          <div class="entry-date" contenteditable="false" data-placeholder="Date">2024</div>
+        </div>
+        <div class="entry-url"><a href="https://github.com/thesorkar9/repo-scorecard" target="_blank" contenteditable="false" data-placeholder="GitHub / URL">github.com/thesorkar9/repo-scorecard</a></div>
+        <ul class="bullets">
+          <li><span contenteditable="false" data-placeholder="Bullet point...">Python CLI tool that audits GitHub repos and profiles for portfolio readiness — scoring on README quality, licensing, CI/CD presence, topics, and release hygiene.</span></li>
+          <li><span contenteditable="false" data-placeholder="Bullet point...">Supports text, Markdown, and JSON output with GitHub Actions workflow and full unit test coverage.</span></li>
+        </ul>
+        <button class="btn-add" onclick="addBullet(this)">+ Add bullet</button>
+        <div style="margin-top:4px" class="tags-row">
+          <span class="tech-tag" contenteditable="false">Python</span><span class="tech-tag" contenteditable="false">GitHub REST API</span><span class="tech-tag" contenteditable="false">CLI</span><span class="tech-tag" contenteditable="false">GitHub Actions</span>
+          <button class="btn-add" onclick="addTag(this)" style="margin-top:0">+ Tag</button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <div class="entry-head">
+          <div class="entry-title" contenteditable="false" data-placeholder="Project Name">Food Ordering System — Full-Stack Web App</div>
+          <div class="entry-date" contenteditable="false" data-placeholder="Date">Apr 2022</div>
+        </div>
+        <div class="entry-url"><a href="https://github.com/thesorkar/Food-Ordering-Project" target="_blank" contenteditable="false" data-placeholder="GitHub / URL">github.com/thesorkar/Food-Ordering-Project</a></div>
+        <ul class="bullets">
+          <li><span contenteditable="false" data-placeholder="Bullet point...">Full-stack online food ordering application with role-based dashboards for customers, restaurant admins, and delivery personnel, with user authentication and real-time order tracking.</span></li>
+        </ul>
+        <button class="btn-add" onclick="addBullet(this)">+ Add bullet</button>
+        <div style="margin-top:4px" class="tags-row">
+          <span class="tech-tag" contenteditable="false">ASP.NET</span><span class="tech-tag" contenteditable="false">C#</span><span class="tech-tag" contenteditable="false">SQL Server</span><span class="tech-tag" contenteditable="false">JavaScript</span><span class="tech-tag" contenteditable="false">SCSS</span>
+          <button class="btn-add" onclick="addTag(this)" style="margin-top:0">+ Tag</button>
+        </div>
+      </div>
+
+    </div>
+    <button class="btn-add" onclick="addProject()">+ Add project</button>
+  </div>
+
+</div><!-- /page 1 -->
+
+
+<!-- PAGE 2 -->
+<div class="page">
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="sec-title">Academic Qualifications</div>
+    <table class="edu-table" id="edu-table">
+      <thead>
+        <tr>
+          <th>Degree / Exam</th>
+          <th>Specialization / Major</th>
+          <th>Institution</th>
+          <th>Result</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td contenteditable="false">M.Tech</td>
+          <td contenteditable="false">Computer Science &amp; Engineering</td>
+          <td contenteditable="false">NIT Silchar, India</td>
+          <td contenteditable="false">6.06 / 10</td>
+          <td contenteditable="false">2026</td>
+        </tr>
+        <tr>
+          <td contenteditable="false">B.Tech</td>
+          <td contenteditable="false">CSE — Specialized in Cyber Security</td>
+          <td contenteditable="false">Lovely Professional University, India</td>
+          <td contenteditable="false">6.57 / 10</td>
+          <td contenteditable="false">2022</td>
+        </tr>
+        <tr>
+          <td contenteditable="false">HSC</td>
+          <td contenteditable="false">Science</td>
+          <td contenteditable="false">Govt. H.S.S. College, Magura</td>
+          <td contenteditable="false">3.5 / 5</td>
+          <td contenteditable="false">2018</td>
+        </tr>
+        <tr>
+          <td contenteditable="false">SSC</td>
+          <td contenteditable="false">Science</td>
+          <td contenteditable="false">Magura Govt. High School</td>
+          <td contenteditable="false">4.33 / 5</td>
+          <td contenteditable="false">2015</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="add-row-btn" onclick="addEduRow()">+ Add education row</button>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="section">
+    <div class="sec-title">Awards &amp; Scholarships</div>
+    <div id="awards-list">
+      <div class="cert-row">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <span><span class="cert-name" contenteditable="false" data-placeholder="Award name">ICCR Scholarship (Indian Council for Cultural Relations)</span></span>
+        <span class="cert-inst" contenteditable="false" data-placeholder="Institution · Year">Government of India · 2024</span>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addAward()">+ Add award</button>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="sec-title">Professional Certifications</div>
+    <div id="certs-list">
+      <div class="cert-row">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <span><span class="cert-name" contenteditable="false" data-placeholder="Cert name">CompTIA Security+ (SY0-601)</span></span>
+        <span class="cert-inst" contenteditable="false" data-placeholder="Issuer · Year">Cybrary · 2021</span>
+      </div>
+      <div class="cert-row">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <span><span class="cert-name" contenteditable="false" data-placeholder="Cert name">Advanced Penetration Testing</span></span>
+        <span class="cert-inst" contenteditable="false" data-placeholder="Issuer · Year">Cybrary · 2021</span>
+      </div>
+      <div class="cert-row">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <span><span class="cert-name" contenteditable="false" data-placeholder="Cert name">Digital Forensics Essentials (DFE)</span></span>
+        <span class="cert-inst" contenteditable="false" data-placeholder="Issuer · Year">EC-Council / CodeRed · 2023</span>
+      </div>
+      <div class="cert-row">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <span><span class="cert-name" contenteditable="false" data-placeholder="Cert name">Cyber Threat Intelligence 101</span></span>
+        <span class="cert-inst" contenteditable="false" data-placeholder="Issuer · Year">arcX · 2023</span>
+      </div>
+      <div class="cert-row">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <span><span class="cert-name" contenteditable="false" data-placeholder="Cert name">Fundamentals of Digital Marketing</span></span>
+        <span class="cert-inst" contenteditable="false" data-placeholder="Issuer · Year">Google Digital Garage · 2020</span>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addCert()">+ Add certification</button>
+  </div>
+
+  <!-- TRAINING -->
+  <div class="section">
+    <div class="sec-title">Training</div>
+    <div id="training-list">
+      <div class="entry">
+        <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+        <div class="entry-head">
+          <div class="entry-title" contenteditable="false" data-placeholder="Training title">Object-Oriented Programming using Python — Internship</div>
+          <div class="entry-date" contenteditable="false" data-placeholder="Date">2021 | 6 Months</div>
+        </div>
+        <div class="entry-sub" contenteditable="false" data-placeholder="Organization">E-Box (LPU Internship Program), India</div>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addTraining()">+ Add training</button>
+  </div>
+
+  <!-- LANGUAGE -->
+  <div class="section">
+    <div class="sec-title">Language Proficiency</div>
+    <table class="edu-table" id="lang-table">
+      <thead>
+        <tr><th>Language</th><th>Reading</th><th>Writing</th><th>Speaking</th></tr>
+      </thead>
+      <tbody>
+        <tr><td contenteditable="false">Bangla</td><td contenteditable="false">Native</td><td contenteditable="false">Native</td><td contenteditable="false">Native</td></tr>
+        <tr><td contenteditable="false">English</td><td contenteditable="false">Fluent</td><td contenteditable="false">Fluent</td><td contenteditable="false">Fluent</td></tr>
+        <tr><td contenteditable="false">Hindi</td><td contenteditable="false">Basic</td><td contenteditable="false">Basic</td><td contenteditable="false">Conversational</td></tr>
+      </tbody>
+    </table>
+    <button class="add-row-btn" onclick="addLangRow()">+ Add language</button>
+  </div>
+
+  <!-- PERSONAL INFO -->
+  <div class="section">
+    <div class="sec-title">Personal Information</div>
+    <div class="personal-grid">
+      <div class="pi-row"><span class="pi-label">Father's Name</span><span contenteditable="false" data-placeholder="Name">Achinto Sorkar</span></div>
+      <div class="pi-row"><span class="pi-label">Date of Birth</span><span contenteditable="false" data-placeholder="DD Month YYYY">09 December 1998</span></div>
+      <div class="pi-row"><span class="pi-label">Mother's Name</span><span contenteditable="false" data-placeholder="Name">Shikha Sorkar</span></div>
+      <div class="pi-row"><span class="pi-label">Marital Status</span><span contenteditable="false" data-placeholder="Status">Single</span></div>
+      <div class="pi-row"><span class="pi-label">Nationality</span><span contenteditable="false" data-placeholder="Nationality">Bangladeshi</span></div>
+      <div class="pi-row"><span class="pi-label">Religion</span><span contenteditable="false" data-placeholder="Religion">Hinduism</span></div>
+      <div class="pi-row"><span class="pi-label">Blood Group</span><span contenteditable="false" data-placeholder="e.g. A+">A+</span></div>
+      <div class="pi-row"><span class="pi-label">Gender</span><span contenteditable="false" data-placeholder="Gender">Male</span></div>
+      <div class="pi-row"><span class="pi-label">Passport No.</span><span contenteditable="false" data-placeholder="Number (Issued: date)">A00147716 (Issued: 15 Nov 2020)</span></div>
+      <div class="pi-row"><span class="pi-label">Height / Weight</span><span contenteditable="false" data-placeholder='5&apos;7" / 70 kg'>5'7" / 70 kg</span></div>
+      <div class="pi-row" style="grid-column: 1 / -1;">
+        <span class="pi-label">Permanent Address</span>
+        <span contenteditable="false" data-placeholder="Full address">Islam Manjil, Hospital Para, Magura Sadar, Magura-7600, Bangladesh</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DECLARATION -->
+  <div class="section">
+    <div class="sec-title">Declaration</div>
+    <p class="declaration" contenteditable="false" data-placeholder="Declaration text...">
+      I hereby declare that all the information provided above is true and correct to the best of my knowledge and belief.
+    </p>
+    <div class="sig-row">
+
+      <!-- DATE -->
+      <div class="sig-block">
+        <div class="date-field" id="dateField" contenteditable="false" data-placeholder="DD Month YYYY"></div>
+        <div class="sig-line-label">Date</div>
+      </div>
+
+      <!-- SIGNATURE -->
+      <div class="sig-block">
+        <div class="sig-area" id="sigArea">
+          <canvas id="sigCanvas" width="440" height="140"></canvas>
+          <img id="sigImg" class="sig-img" alt="Signature">
+          <span class="sig-placeholder-text" id="sigPlaceholder">Sign here or upload</span>
+        </div>
+        <div class="sig-controls">
+          <button class="sig-ctrl-btn active" id="btnDraw" onclick="setMode('draw')">✏ Draw</button>
+          <button class="sig-ctrl-btn" id="btnUpload" onclick="document.getElementById('sigImgInput').click()">⬆ Upload</button>
+          <button class="sig-ctrl-btn" onclick="clearSignature()">✕ Clear</button>
+        </div>
+        <input type="file" id="sigImgInput" accept="image/*" style="display:none">
+        <div class="sig-line-label">Signature of Applicant</div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /page 2 -->
+</div><!-- /page-wrap -->
+
+<script>
+  /* ── PHOTO ── */
+  const photoInput = document.getElementById('photoInput');
+  const photoImg = document.getElementById('photoImg');
+  const photoPlaceholder = document.getElementById('photoPlaceholder');
+
+  photoInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      photoImg.src = ev.target.result;
+      photoImg.style.display = 'block';
+      photoPlaceholder.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  });
+
+  /* ── EDIT MODE ── */
+  function enableEdit() {
+    document.body.classList.add('edit-mode');
+    document.querySelectorAll('[contenteditable]').forEach(el => {
+      el.setAttribute('contenteditable', 'true');
+    });
+  }
+
+  function disableEdit() {
+    document.body.classList.remove('edit-mode');
+    document.querySelectorAll('[contenteditable]').forEach(el => {
+      el.setAttribute('contenteditable', 'false');
+      el.blur();
+    });
+  }
+
+  /* ── ENTRY MANAGEMENT ── */
+  function deleteEntry(btn) {
+    const parent = btn.closest('.entry, .cert-row, tr');
+    if (parent) parent.remove();
+  }
+
+  function addBullet(btn) {
+    const entry = btn.closest('.entry');
+    const ul = entry.querySelector('.bullets');
+    const li = document.createElement('li');
+    li.innerHTML = '<span contenteditable="true" data-placeholder="Bullet point..."></span>';
+    ul.appendChild(li);
+    li.querySelector('span').focus();
+  }
+
+  function addTag(btn) {
+    const tagRow = btn.closest('.tags-row');
+    const tag = document.createElement('span');
+    tag.className = 'tech-tag';
+    tag.setAttribute('contenteditable', 'true');
+    tag.textContent = 'New Tag';
+    tagRow.insertBefore(tag, btn);
+    tag.focus();
+    const range = document.createRange();
+    range.selectNodeContents(tag);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+  }
+
+  function addExperience() {
+    const list = document.getElementById('experience-list');
+    const div = document.createElement('div');
+    div.className = 'entry';
+    div.innerHTML = `
+      <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+      <div class="entry-head">
+        <div class="entry-title" contenteditable="true" data-placeholder="Job Title">Job Title</div>
+        <div class="entry-date" contenteditable="true" data-placeholder="Date">Month YYYY – Month YYYY</div>
+      </div>
+      <div class="entry-sub" contenteditable="true" data-placeholder="Company, Location | Duration">Company Name, Location | Duration</div>
+      <ul class="bullets">
+        <li><span contenteditable="true" data-placeholder="Bullet point..."></span></li>
+      </ul>
+      <button class="btn-add" onclick="addBullet(this)">+ Add bullet</button>
+    `;
+    list.appendChild(div);
+    div.querySelector('.entry-title').focus();
+  }
+
+  function addProject() {
+    const list = document.getElementById('projects-list');
+    const div = document.createElement('div');
+    div.className = 'entry';
+    div.innerHTML = `
+      <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+      <div class="entry-head">
+        <div class="entry-title" contenteditable="true" data-placeholder="Project Name">Project Name</div>
+        <div class="entry-date" contenteditable="true" data-placeholder="Date">Year</div>
+      </div>
+      <div class="entry-url" contenteditable="true" data-placeholder="GitHub / URL">github.com/...</div>
+      <ul class="bullets">
+        <li><span contenteditable="true" data-placeholder="Bullet point..."></span></li>
+      </ul>
+      <button class="btn-add" onclick="addBullet(this)">+ Add bullet</button>
+      <div style="margin-top:4px" class="tags-row">
+        <button class="btn-add" onclick="addTag(this)" style="margin-top:0">+ Tag</button>
+      </div>
+    `;
+    list.appendChild(div);
+    div.querySelector('.entry-title').focus();
+  }
+
+  function addSkillRow() {
+    const table = document.getElementById('skills-table');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td contenteditable="true" data-placeholder="Category">New Category</td>
+      <td contenteditable="true" data-placeholder="Skills...">Skill 1, Skill 2, Skill 3</td>
+    `;
+    table.appendChild(tr);
+    tr.querySelector('td').focus();
+  }
+
+  function addEduRow() {
+    const tbody = document.querySelector('#edu-table tbody');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td contenteditable="true" data-placeholder="Degree">Degree</td>
+      <td contenteditable="true" data-placeholder="Major">Major / Specialization</td>
+      <td contenteditable="true" data-placeholder="Institution">Institution Name</td>
+      <td contenteditable="true" data-placeholder="Result">0.00 / 10</td>
+      <td contenteditable="true" data-placeholder="Year">20XX</td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('td').focus();
+  }
+
+  function addLangRow() {
+    const tbody = document.querySelector('#lang-table tbody');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td contenteditable="true" data-placeholder="Language">Language</td>
+      <td contenteditable="true" data-placeholder="Level">Fluent</td>
+      <td contenteditable="true" data-placeholder="Level">Fluent</td>
+      <td contenteditable="true" data-placeholder="Level">Fluent</td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('td').focus();
+  }
+
+  function addAward() {
+    const list = document.getElementById('awards-list');
+    const div = document.createElement('div');
+    div.className = 'cert-row';
+    div.innerHTML = `
+      <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+      <span><span class="cert-name" contenteditable="true" data-placeholder="Award name">Award Name</span></span>
+      <span class="cert-inst" contenteditable="true" data-placeholder="Institution · Year">Institution · Year</span>
+    `;
+    list.appendChild(div);
+    div.querySelector('.cert-name').focus();
+  }
+
+  function addCert() {
+    const list = document.getElementById('certs-list');
+    const div = document.createElement('div');
+    div.className = 'cert-row';
+    div.innerHTML = `
+      <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+      <span><span class="cert-name" contenteditable="true" data-placeholder="Cert name">Certification Name</span></span>
+      <span class="cert-inst" contenteditable="true" data-placeholder="Issuer · Year">Issuer · Year</span>
+    `;
+    list.appendChild(div);
+    div.querySelector('.cert-name').focus();
+  }
+
+  function addTraining() {
+    const list = document.getElementById('training-list');
+    const div = document.createElement('div');
+    div.className = 'entry';
+    div.innerHTML = `
+      <button class="delete-btn" onclick="deleteEntry(this)" title="Remove">✕</button>
+      <div class="entry-head">
+        <div class="entry-title" contenteditable="true" data-placeholder="Training title">Training / Course Title</div>
+        <div class="entry-date" contenteditable="true" data-placeholder="Year | Duration">Year | Duration</div>
+      </div>
+      <div class="entry-sub" contenteditable="true" data-placeholder="Organization">Organization Name</div>
+    `;
+    list.appendChild(div);
+    div.querySelector('.entry-title').focus();
+  }
+
+  /* ── SIGNATURE ── */
+  const canvas = document.getElementById('sigCanvas');
+  const ctx = canvas.getContext('2d');
+  const sigImg = document.getElementById('sigImg');
+  const sigPlaceholder = document.getElementById('sigPlaceholder');
+  const sigImgInput = document.getElementById('sigImgInput');
+
+  let drawing = false;
+  let sigMode = 'draw'; // 'draw' | 'upload'
+  let hasDrawing = false;
+
+  ctx.strokeStyle = '#1C1C1C';
+  ctx.lineWidth = 2.2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    if (e.touches) {
+      return {
+        x: (e.touches[0].clientX - rect.left) * scaleX,
+        y: (e.touches[0].clientY - rect.top) * scaleY
+      };
+    }
+    return {
+      x: (e.clientX - rect.left) * scaleX,
+      y: (e.clientY - rect.top) * scaleY
+    };
+  }
+
+  canvas.addEventListener('mousedown', e => {
+    if (!document.body.classList.contains('edit-mode') || sigMode !== 'draw') return;
+    drawing = true;
+    const p = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    hidePlaceholder();
+  });
+
+  canvas.addEventListener('mousemove', e => {
+    if (!drawing) return;
+    const p = getPos(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    hasDrawing = true;
+  });
+
+  canvas.addEventListener('mouseup', () => { drawing = false; });
+  canvas.addEventListener('mouseleave', () => { drawing = false; });
+
+  canvas.addEventListener('touchstart', e => {
+    if (!document.body.classList.contains('edit-mode') || sigMode !== 'draw') return;
+    e.preventDefault();
+    drawing = true;
+    const p = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    hidePlaceholder();
+  }, { passive: false });
+
+  canvas.addEventListener('touchmove', e => {
+    if (!drawing) return;
+    e.preventDefault();
+    const p = getPos(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    hasDrawing = true;
+  }, { passive: false });
+
+  canvas.addEventListener('touchend', () => { drawing = false; });
+
+  function hidePlaceholder() {
+    sigPlaceholder.style.display = 'none';
+  }
+
+  function setMode(mode) {
+    sigMode = mode;
+    document.getElementById('btnDraw').classList.toggle('active', mode === 'draw');
+    document.getElementById('btnUpload').classList.toggle('active', mode === 'upload');
+    if (mode === 'draw') {
+      sigImg.style.display = 'none';
+      canvas.style.display = 'block';
+    }
+  }
+
+  function clearSignature() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    sigImg.style.display = 'none';
+    sigImg.src = '';
+    canvas.style.display = 'block';
+    sigPlaceholder.style.display = '';
+    hasDrawing = false;
+    sigMode = 'draw';
+    document.getElementById('btnDraw').classList.add('active');
+    document.getElementById('btnUpload').classList.remove('active');
+  }
+
+  sigImgInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      sigImg.src = ev.target.result;
+      sigImg.style.display = 'block';
+      canvas.style.display = 'none';
+      sigPlaceholder.style.display = 'none';
+      sigMode = 'upload';
+      document.getElementById('btnDraw').classList.remove('active');
+      document.getElementById('btnUpload').classList.add('active');
+    };
+    reader.readAsDataURL(file);
+    this.value = '';
+  });
+</script>
+</body>
+</html>
